@@ -191,15 +191,15 @@ const Contact = () => {
             <motion.div className={styles.infoColumn} variants={itemVariants}>
               <span className={styles.infoLabel}>[ Phone ]</span>
               <div className={styles.infoValues}>
-                <span className={styles.infoValue}>+91 8799142626</span>
+                <a href="tel:+918799142626" className={styles.infoValue}>+91 8799142626</a>
               </div>
             </motion.div>
 
             <motion.div className={styles.infoColumn} variants={itemVariants}>
               <span className={styles.infoLabel}>[ Email ]</span>
               <div className={styles.infoValues}>
-                <span className={styles.infoValue}>nirjargoswami2626@gmail.com</span>
-                <span className={styles.infoValue}>nirjar@gmail.com</span>
+                <a href="mailto:nirjargoswami2626@gmail.com" className={styles.infoValue}>nirjargoswami2626@gmail.com</a>
+                <a href="mailto:nirjar@gmail.com" className={styles.infoValue}>nirjar@gmail.com</a>
               </div>
             </motion.div>
           </motion.div>
