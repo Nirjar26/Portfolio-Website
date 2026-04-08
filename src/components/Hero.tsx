@@ -10,39 +10,27 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.4
+        staggerChildren: 0.1,
+        delayChildren: 0.3
       }
     }
   };
 
   const itemVariants: Variants = {
     hidden: { 
-      y: 40,
-      opacity: 0,
-      filter: "blur(6px)"
+      opacity: 0, 
+      y: 20, 
+      scale: 0.96,
+      filter: "blur(4px)"
     },
     visible: {
-      y: 0,
-      opacity: 1,
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 1,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
-  const infoVariants: Variants = {
-    hidden: { y: 20, opacity: 0, filter: "blur(4px)" },
-    visible: {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-        delay: 0.2
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1] // Apple-style ease-out
       }
     }
   };
@@ -69,12 +57,11 @@ const Hero = () => {
           
           <motion.div 
             className={styles.infoGroup}
-            variants={infoVariants}
+            variants={itemVariants}
           >
             <span className={styles.intro}>Hello! I am Nirjar Goswami</span>
             <span className={styles.role}>Associate Cloud Engineer</span>
           </motion.div>
-
         </motion.div>
       </div>
     </section>

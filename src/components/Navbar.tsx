@@ -10,23 +10,33 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+
+      document.body.classList.add('is-scrolling');
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        document.body.classList.remove('is-scrolling');
+      }, 1000);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   const navItems = [
     { name: 'Home', path: '#hero' },
-    { name: 'Works', path: '#works' },
     { name: 'About me', path: '#about' },
-    { name: 'Journey', path: '#journey' }
+    { name: 'Works', path: '#works' },
+    { name: 'Blogs', path: '#blog' }
   ];
 
   const toggleMenu = () => {
@@ -34,14 +44,10 @@ const Navbar = () => {
   };
 
   const containerVariants: Variants = {
-    hidden: { opacity: 0, y: -20, filter: "blur(5px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      filter: "blur(0px)",
-      transition: { 
-        duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1],
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
@@ -49,41 +55,26 @@ const Navbar = () => {
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: -10, filter: "blur(4px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      filter: "blur(0px)",
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+    hidden: { opacity: 0, y: -10, scale: 0.96 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   const overlayVariants: Variants = {
-    hidden: { x: "100%", opacity: 0 },
-    visible: { 
-      x: 0, 
+    hidden: { opacity: 0, scale: 0.98 },
+    visible: {
       opacity: 1,
-      transition: { 
-        duration: 0.5, 
-        ease: [0.16, 1, 0.3, 1],
-        staggerChildren: 0.07,
-        delayChildren: 0.2
-      }
+      scale: 1,
+      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
     },
-    exit: { 
-      x: "100%", 
+    exit: {
       opacity: 0,
-      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } 
-    }
-  };
-
-  const mobileLinkVariants: Variants = {
-    hidden: { x: 30, opacity: 0, filter: "blur(5px)" },
-    visible: { 
-      x: 0, 
-      opacity: 1, 
-      filter: "blur(0px)",
-      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } 
+      scale: 0.98,
+      transition: { duration: 0.3 }
     }
   };
 
@@ -119,7 +110,7 @@ const Navbar = () => {
         <div className={styles.navActions}>
           <motion.div variants={itemVariants}>
             <a href="#contact" className={styles.cta}>
-              Let's talk
+              Lets Talk
             </a>
           </motion.div>
 
@@ -149,7 +140,9 @@ const Navbar = () => {
               {navItems.map((item, index) => (
                 <motion.li
                   key={item.name}
-                  variants={mobileLinkVariants}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 + 0.1 }}
                 >
                   <a
                     href={item.path}
@@ -160,13 +153,17 @@ const Navbar = () => {
                   </a>
                 </motion.li>
               ))}
-              <motion.li variants={mobileLinkVariants}>
+              <motion.li
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.05 + 0.1 }}
+              >
                 <a 
                   href="#contact" 
                   className={styles.mobileCTA} 
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Let's talk
+                  Lets Talk
                 </a>
               </motion.li>
             </ul>
@@ -178,4 +175,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

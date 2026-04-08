@@ -1,18 +1,16 @@
 import Hero from "@/components/Hero";
-import Works from "@/components/Works";
-import Bio from "@/components/Bio";
 import About from "@/components/About";
-import Journey from "@/components/Journey";
+import Works from "@/components/Works";
+import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Bio />
-      <Works />
       <About />
-      <Journey />
+      <Works />
+      <Blog />
       <Contact />
     </main>
   );

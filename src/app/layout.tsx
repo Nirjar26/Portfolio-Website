@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Outfit, Plus_Jakarta_Sans, Figtree } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,8 +7,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-// We use the same Inter font for display as well
-const display = Inter({
+const display = Figtree({
   variable: "--font-display",
   subsets: ["latin"],
 });
@@ -29,6 +28,7 @@ export const metadata: Metadata = {
 };
 
 import Navbar from "@/components/Navbar";
+import LenisProvider from "@/components/LenisProvider";
 
 export default function RootLayout({
   children,
@@ -38,8 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${display.variable} ${outfit.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <Navbar />
-        {children}
+        <LenisProvider>
+          <Navbar />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

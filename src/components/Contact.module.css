@@ -1,5 +1,5 @@
 .contactSection {
-  background-color: var(--bg-alt);
+  background-color: var(--bg);
   padding: 5rem 0 0 0;
   color: var(--ink);
   position: relative;
@@ -16,28 +16,25 @@
 
 .indicator {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  justify-content: flex-start;
-  /* Left-aligned */
+  gap: 1rem;
+  width: 100%;
 }
 
 .indicatorText {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-accent);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
   color: var(--ink);
-  opacity: 0.5;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  opacity: 1;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .indicatorLine {
-  height: 1px;
-  background-color: var(--ink);
-  opacity: 0.15;
-  width: 80px;
+  display: none;
 }
 
 .title {
@@ -51,24 +48,43 @@
 }
 
 .description {
-  font-family: var(--font-accent);
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   color: var(--mid);
   max-width: 600px;
   line-height: 1.6;
-  margin-bottom: 4rem;
-  /* Content starts from left */
+  margin: 0 auto 0 auto;
+  /* Closer to each other */
+  text-align: center;
+}
+
+.description:last-of-type {
+  margin-bottom: 2.5rem;
+  /* Closer to the form */
+}
+
+.mailLink {
+  text-decoration: underline;
+  color: var(--ink);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.mailLink:hover {
+  color: var(--accent);
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 550px;
+  margin: 0 auto;
 }
 
 .formGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -79,12 +95,18 @@
 }
 
 .label {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 500;
-  color: var(--mid);
+  color: #000000;
   opacity: 0.8;
   transition: color 0.3s ease;
+}
+
+.required {
+  color: #ef4444;
+  /* Standard red-500 */
+  margin-left: 0.2rem;
 }
 
 .input,
@@ -92,11 +114,11 @@
   width: 100%;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  padding: 1.25rem 1.5rem;
+  padding: 0.8rem 1rem;
   color: var(--ink);
-  font-family: var(--font-primary);
-  font-size: 1rem;
-  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  border-radius: 6px;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, opacity, filter;
   outline: none;
@@ -122,8 +144,17 @@
 .submitContainer {
   margin-top: 1rem;
   display: flex;
-  justify-content: flex-start;
-  /* Left-aligned */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  /* margin-bottom: 4rem; */
+}
+
+.privacyText {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--mid);
+  opacity: 0.95;
 }
 
 .submitBtn {
@@ -131,13 +162,12 @@
   align-items: center;
   gap: 1rem;
   background-color: var(--ink);
-  margin-bottom: 4rem;
   color: var(--white);
-  padding: 1.2rem 2.5rem;
+  padding: 1rem 2.25rem;
   border-radius: var(--radius-md);
-  font-family: var(--font-primary);
-  font-weight: 600;
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
   transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   will-change: transform;
   border: 1px solid transparent;
@@ -159,29 +189,92 @@
 
 .socialSection {
   margin-top: 2rem;
-  /* Reduced from 4rem */
   background-color: var(--bg);
-  padding: 2.5rem 0 0 0;
-  /* Reduced top padding */
-  border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centered */
   gap: 2rem;
-  /* Reduced from 3rem */
   width: 100%;
+}
+
+.socialSection>.container {
+  border-top: 1px solid var(--line);
+  padding-top: 2.5rem;
+}
+
+.socialRowsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .socialGrid {
   display: flex;
   justify-content: center;
-  /* Centered */
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0.2rem;
-  width: 100%;
-  margin-bottom: 2rem;
-  /* Reduced from 4rem */
+}
+
+.contactGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.socialWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.locationContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.locationPopup {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.locationPopup::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--line) transparent transparent transparent;
+}
+
+.locationPopup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -1px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--white) transparent transparent transparent;
 }
 
 .socialItem {
@@ -217,20 +310,20 @@
 
 .contactInfoSection {
   width: 100%;
-  margin-top: 2.5rem;
-  /* Reduced from 4rem */
+  margin-top: 5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
   align-items: start;
-  text-align: left;
-  /* Exception: Left aligned on desktop */
+  text-align: center;
+  justify-content: center;
 }
 
 .infoColumn {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: center;
+  gap: 1rem;
 }
 
 .logo {
@@ -253,26 +346,29 @@
 }
 
 .infoLabel {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ink);
-  opacity: 0.9;
-  letter-spacing: 0.05em;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
 }
 
 .infoValues {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 }
 
 .infoValue {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-size: 0.95rem;
-  color: var(--mid);
+  font-weight: 500;
+  color: var(--ink);
   line-height: 1.5;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 
@@ -296,8 +392,8 @@
 
 @media (max-width: 900px) {
   .contactInfoSection {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }
 
@@ -309,8 +405,8 @@
   /* Tightened padding */
   border-top: 1px solid var(--line);
   color: var(--ink);
-  font-family: var(--font-primary);
-  font-size: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
   opacity: 0.85;
   text-align: center;
   /* Always centered */
@@ -318,7 +414,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .contactSection {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
 
   .title {
@@ -353,7 +449,7 @@
   }
 
   .indicator {
-    justify-content: flex-start;
+    margin-bottom: 2.5rem;
   }
 
   .title {
@@ -365,8 +461,12 @@
 
   .description {
     font-size: 0.95rem;
-    margin: 0 0 3rem 0;
-    text-align: left;
+    margin: 0 auto 0.2rem auto;
+    text-align: center;
+  }
+
+  .description:last-of-type {
+    margin-bottom: 2rem;
   }
 
   .form {
@@ -378,14 +478,14 @@
     gap: 1.5rem;
   }
 
-  .input,
-  .textarea {
-    padding: 1rem 1.25rem;
+  .form input,
+  .form textarea {
     font-size: 0.95rem;
   }
 
   .submitContainer {
-    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
   .submitBtn {
@@ -417,19 +517,45 @@
 
   .socialSection {
     margin-top: 1.5rem;
-    padding: 2rem 0 0 0;
+    padding: 0;
     gap: 1.5rem;
     align-items: center;
-    /* Centered on mobile too */
   }
 
-  .socialGrid {
-    margin-bottom: 1.5rem;
-    justify-content: center;
-    /* Centered on mobile too */
+  .socialRowsWrapper {
+    gap: 1.25rem;
+  }
+
+  .socialGrid, .contactGrid {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .socialItem {
+    width: 44px;
+    height: 44px;
+  }
+
+  .socialItem .socialIconImg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .locationPopup {
+    left: 50%;
+    bottom: calc(100% + 0.75rem);
+    transform: translateX(-50%);
+    margin-left: 0;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .socialSection>.container {
+    padding-top: 1.5rem;
   }
 
   .copyright {
     text-align: center;
+    margin-top: 2rem;
   }
 }

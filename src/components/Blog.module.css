@@ -1,0 +1,245 @@
+.blogSection {
+  background-color: #ffffff;
+  /* Changed to white to let cards sit on white or light gray */
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  width: 100%;
+}
+
+.sectionHeader {
+  font-family: var(--font-accent);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: #71717a;
+  margin-top: 0.25rem;
+  text-align: center;
+  max-width: 650px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 420px));
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.blogCard {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  height: 100%;
+  overflow: hidden;
+}
+
+.blogCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  position: relative;
+  padding: 2.5rem 2rem 1rem 2rem;
+  min-height: 140px;
+}
+
+.gradientBlue {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  /* Mimics the yellow-ish gradient in the first card of the image */
+}
+
+/* Overriding colors to match the image precisely */
+.gradientBlue {
+  background: linear-gradient(135deg, #fdf4d7 0%, #fff 100%);
+}
+
+.gradientViolet {
+  background: linear-gradient(135deg, #ede9fe 0%, #fff 100%);
+}
+
+.gradientEmerald {
+  background: linear-gradient(135deg, #fee2e2 0%, #fff 100%);
+}
+
+.tagGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #71717a;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.readTime {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badgeBox {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1.75rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -3rem;
+  /* Overlap with the body */
+}
+
+.badgeTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.2rem;
+}
+
+.badgeDesc {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #52525b;
+}
+
+.cardBody {
+  padding: 3rem 2rem 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.20rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #52525b;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.footerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.date {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #71717a;
+}
+
+.takeaways {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #71717a;
+  opacity: 0.8;
+}
+
+.readButton {
+  background-color: #111;
+  color: #fff;
+  padding: 0.85rem 1.75rem;
+  border-radius: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.readButton:hover {
+  background-color: #000;
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .blogSection {
+    padding: 4rem 0;
+  }
+
+  .blogGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .blogSection {
+    padding: 4rem 0;
+  }
+
+  .blogGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sectionHeader {
+    font-size: 2rem;
+  }
+
+  .blogCard {
+    border-radius: 1.5rem;
+  }
+
+  .badgeTitle {
+    font-size: 1.5rem;
+  }
+}

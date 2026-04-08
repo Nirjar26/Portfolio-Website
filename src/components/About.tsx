@@ -18,31 +18,38 @@ const About = () => {
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 20, scale: 0.96, filter: "blur(4px)" },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
-  const lineVariants: Variants = {
-    hidden: { scaleX: 0, opacity: 0.1 },
+  const leftItemVariants: Variants = {
+    hidden: { opacity: 0, x: -20, scale: 0.96, filter: "blur(4px)" },
     visible: {
-      scaleX: 1,
-      opacity: 0.3,
-      transition: { duration: 1.2, ease: "easeInOut" }
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
     <section id="about" className={styles.aboutSection}>
+      <motion.div 
+        className={styles.sectionSeparator}
+        initial={{ height: 0, opacity: 0 }}
+        whileInView={{ height: 80, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      />
       <div className="container">
-        <motion.div 
+        <motion.div
           className={styles.aboutContainer}
           initial="hidden"
           whileInView="visible"
@@ -50,30 +57,34 @@ const About = () => {
           variants={containerVariants}
         >
           <div className={styles.sectionIndicator}>
-            <motion.span 
+            <motion.span
               className={styles.indicatorText}
               variants={itemVariants}
             >
-              / ABOUT
+              About
             </motion.span>
-            <motion.div 
+            <motion.div
               className={styles.indicatorLine}
-              variants={lineVariants}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 0.3 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{ transformOrigin: "left" }}
             />
           </div>
 
           <div className={styles.textContainer}>
             <motion.p className={styles.paragraph} variants={itemVariants}>
-              Hi, I'm <strong>Nirjar</strong>, residing in <strong>Ahmedabad, Gujarat</strong>. I work in cloud and security — mostly the infrastructure side, understanding how systems are actually put together and what can go wrong.
+              Hi, I'm <strong>Nirjar</strong>, an <strong>Associate Cloud Engineer </strong>residing in <strong>Ahmedabad, Gujarat</strong>. I work in cloud and security — mostly the infrastructure side, understanding how systems are actually put together and what can go wrong.
             </motion.p>
 
             <motion.p className={styles.paragraph} variants={itemVariants}>
               The interest started early. I was always more curious about what was happening behind the screen than what was on it. Networks, systems, the cloud — I wanted to know how things actually run, not just that they do. That eventually turned into something I take seriously.
+              These days I'm trying to get good at a few specific things rather than knowing a bit about everything.
             </motion.p>
 
             <motion.p className={styles.paragraph} variants={itemVariants}>
-              These days I'm trying to get good at a few specific things rather than knowing a bit about everything.
+              Outside of work, I’m gaming or discovering new places to eat.
             </motion.p>
 
             <div className={styles.actionsContainer}>
@@ -83,6 +94,8 @@ const About = () => {
                 rel="noopener noreferrer"
                 className={styles.downloadBtn}
                 variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 download="Nirjar_Goswami_Resume.pdf"
               >
                 <Download size={18} />
@@ -103,7 +116,8 @@ const About = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    variants={itemVariants}
+                    variants={leftItemVariants}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <social.icon size={20} />
                   </motion.a>
@@ -111,16 +125,6 @@ const About = () => {
               </div>
             </div>
 
-            <div className={styles.statsGrid}>
-              <motion.div className={styles.statCard} variants={itemVariants}>
-                <span className={styles.statNumber}>2+</span>
-                <span className={styles.statLabel}>Years of Experience in Information Technology</span>
-              </motion.div>
-              <motion.div className={styles.statCard} variants={itemVariants}>
-                <span className={styles.statNumber}>3+</span>
-                <span className={styles.statLabel}>Projects Completed</span>
-              </motion.div>
-            </div>
           </div>
         </motion.div>
       </div>

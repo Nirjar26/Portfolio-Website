@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
   Send,
   ArrowRight,
@@ -9,11 +9,28 @@ import {
   Twitter,
   Linkedin,
   Ghost,
-  Github
+  Github,
+  Mail,
+  Phone,
+  MapPin,
+  BookOpen
 } from 'lucide-react';
 import styles from './Contact.module.css';
+import PhoneInput from './PhoneInput';
+
+const HashnodeIcon = ({ size = 28, className }: { size?: number, className?: string }) => (
+  <img
+    src="/assets/social%20icons/hashnode-icon.svg"
+    width={size}
+    height={size}
+    alt="Hashnode"
+    className={className}
+    style={{ display: 'block' }}
+  />
+);
 
 const Contact = () => {
+  const [showLocation, setShowLocation] = useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -39,52 +56,71 @@ const Contact = () => {
     }
   };
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 20, scale: 0.96, filter: "blur(4px)" },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const leftItemVariants: Variants = {
+    hidden: { opacity: 0, x: -20, scale: 0.96, filter: "blur(4px)" },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
     <section id="contact" className={styles.contactSection}>
       <div className="container">
-        <motion.div 
+        <motion.div
           className={styles.contactContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } }
-          }}
+          variants={containerVariants}
         >
           <div className={styles.indicator}>
             <motion.span className={styles.indicatorText} variants={itemVariants}>
-              / CONTACT
+              Get in Touch
             </motion.span>
-            <motion.div 
-              className={styles.indicatorLine} 
-              variants={{
-                hidden: { scaleX: 0, opacity: 0 },
-                visible: { scaleX: 1, opacity: 0.3, transition: { duration: 1 } }
-              }}
+            <motion.p className={styles.description} variants={itemVariants}>
+              Please contact me directly at <a href="mailto:nirjargoswami2626@gmail.com" className={styles.mailLink}>nirjargoswami2626@gmail.com</a> or through this form.
+            </motion.p>
+            <motion.p className={styles.description} variants={itemVariants}>
+              Building and exploring cloud-native applications, IAM systems, and secure backend architectures.
+            </motion.p>
+            <motion.p className={styles.description} variants={itemVariants}>
+              Interested in working on real-world, production-grade solutions.
+            </motion.p>
+            <motion.div
+              className={styles.indicatorLine}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 0.3 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{ transformOrigin: "left" }}
             />
           </div>
-
-          <motion.h2 className={styles.title} variants={itemVariants}>
-            Just say hello!
-          </motion.h2>
-
-          <motion.p className={styles.description} variants={itemVariants}>
-            Want to know more about me, tell me about your project or just to say hello? Drop me a line and I'll get back as soon as possible.
-          </motion.p>
 
           <motion.form
             className={styles.form}
@@ -93,7 +129,7 @@ const Contact = () => {
           >
             <div className={styles.formGrid}>
               <div className={styles.inputGroup}>
-                <label className={styles.label}>Your name*</label>
+                <label className={styles.label}>Your name<span className={styles.required}>*</span></label>
                 <input type="text" name="name" className={styles.input} placeholder="Jane Doe" required />
               </div>
 
@@ -103,18 +139,18 @@ const Contact = () => {
               </div>
 
               <div className={styles.inputGroup}>
-                <label className={styles.label}>Email*</label>
+                <label className={styles.label}>Email<span className={styles.required}>*</span></label>
                 <input type="email" name="email" className={styles.input} placeholder="you@gmail.com" required />
               </div>
 
               <div className={styles.inputGroup}>
                 <label className={styles.label}>Phone</label>
-                <input type="tel" name="phone" className={styles.input} placeholder="Mobile Number" />
+                <PhoneInput name="phone" />
               </div>
             </div>
 
             <div className={styles.inputGroup}>
-              <label className={styles.label}>Message*</label>
+              <label className={styles.label}>Message<span className={styles.required}>*</span></label>
               <textarea
                 className={styles.textarea}
                 name="message"
@@ -128,6 +164,7 @@ const Contact = () => {
                 Send Message
                 <ArrowRight size={20} />
               </button>
+              <span className={styles.privacyText}>No spam. Your details stay private.</span>
             </div>
           </motion.form>
         </motion.div>
@@ -135,80 +172,92 @@ const Contact = () => {
 
       <div className={styles.socialSection}>
         <div className="container">
-          <motion.div 
+          <motion.div
             className={styles.socialGrid}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.1 } }
-            }}
+            variants={containerVariants}
           >
-            {[
-              { icon: Instagram, name: "Instagram", href: "https://www.instagram.com/nirjar_goswami/" },
-              { icon: Twitter, name: "X", href: "https://x.com/nirjxrgoswami" },
-              { icon: Linkedin, name: "LinkedIn", href: "https://www.linkedin.com/in/nirjarbharthi-goswami-b593633a7" },
-              { icon: Ghost, name: "Snapchat", href: "https://www.snapchat.com/@nirjxr26" },
-              { icon: Github, name: "GitHub", href: "https://github.com/Nirjar26/" }
-            ].map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.href}
-                className={styles.socialItem}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={itemVariants}
-              >
-                <item.icon className={styles.socialIconImg} size={32} />
-              </motion.a>
-            ))}
+            <div className={styles.socialRowsWrapper}>
+              {/* Main Social Profiles */}
+              <div className={styles.socialGrid}>
+                {[
+                  { icon: Instagram, name: "Instagram", href: "https://www.instagram.com/nirjar_goswami/" },
+                  { icon: Twitter, name: "X", href: "https://x.com/nirjxrgoswami" },
+                  { icon: Linkedin, name: "LinkedIn", href: "https://www.linkedin.com/in/nirjarbharthi-goswami-b593633a7" },
+                  { icon: Ghost, name: "Snapchat", href: "https://www.snapchat.com/@nirjxr26" },
+                  { icon: Github, name: "GitHub", href: "https://github.com/Nirjar26/" },
+                  { icon: HashnodeIcon, name: "Hashnode", href: "https://nirjar.hashnode.dev/" }
+                ].map((item, index) => (
+                  <motion.a
+                    key={index}
+                    href={item.href}
+                    className={styles.socialItem}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={leftItemVariants}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <item.icon className={styles.socialIconImg} size={28} />
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Direct Contact Methods */}
+              <div className={styles.contactGrid}>
+                {[
+                  { icon: Mail, name: "Email", href: "mailto:nirjargoswami2626@gmail.com", type: 'action' },
+                  { icon: Phone, name: "Phone", href: "tel:+918799142626", type: 'action' },
+                  { icon: MapPin, name: "Location", type: 'location' }
+                ].map((item, index) => (
+                  <div key={index} className={styles.socialWrapper}>
+                    {item.type === 'location' ? (
+                      <div className={styles.locationContainer}>
+                        <motion.button
+                          className={styles.socialItem}
+                          onClick={() => setShowLocation(!showLocation)}
+                          variants={leftItemVariants}
+                        >
+                          <MapPin className={styles.socialIconImg} size={28} />
+                        </motion.button>
+                        <AnimatePresence>
+                          {showLocation && (
+                            <motion.div 
+                              className={styles.locationPopup}
+                              initial={{ opacity: 0, x: -15, scale: 0.96 }}
+                              animate={{ opacity: 1, x: 0, scale: 1 }}
+                              exit={{ opacity: 0, x: -15, scale: 0.96 }}
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              Ahmedabad, Gujarat
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <motion.a
+                        href={item.href}
+                        className={styles.socialItem}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={leftItemVariants}
+                      >
+                        <item.icon className={styles.socialIconImg} size={28} />
+                      </motion.a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          <motion.div 
-            className={styles.contactInfoSection}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.1 } }
-            }}
-          >
-            <motion.div className={styles.logoColumn} variants={itemVariants}>
-              <div className={styles.logo}>
-                <div className={styles.logoDot} />
-                NG
-              </div>
-            </motion.div>
-
-            <motion.div className={styles.infoColumn} variants={itemVariants}>
-              <span className={styles.infoLabel}>[ Location ]</span>
-              <div className={styles.infoValues}>
-                <span className={styles.infoValue}>Ahmedabad, Gujarat</span>
-                <span className={styles.infoValue}>India</span>
-              </div>
-            </motion.div>
-
-            <motion.div className={styles.infoColumn} variants={itemVariants}>
-              <span className={styles.infoLabel}>[ Phone ]</span>
-              <div className={styles.infoValues}>
-                <a href="tel:+918799142626" className={styles.infoValue}>+91 8799142626</a>
-              </div>
-            </motion.div>
-
-            <motion.div className={styles.infoColumn} variants={itemVariants}>
-              <span className={styles.infoLabel}>[ Email ]</span>
-              <div className={styles.infoValues}>
-                <a href="mailto:nirjargoswami2626@gmail.com" className={styles.infoValue}>nirjargoswami2626@gmail.com</a>
-                <a href="mailto:nirjar@gmail.com" className={styles.infoValue}>nirjar@gmail.com</a>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
+          <motion.div
             className={styles.copyright}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 0.85 }}
             viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
             © {new Date().getFullYear()} Nirjar Goswami. All rights reserved.
           </motion.div>
@@ -219,5 +268,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-

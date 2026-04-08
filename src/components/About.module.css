@@ -1,7 +1,28 @@
 .aboutSection {
-  background-color: var(--bg-alt);
-  padding: 5rem 0;
+  background-color: var(--bg);
+  padding: 0 0 5rem 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionSeparator {
+  width: 4px;
+  height: 80px;
+  background-color: var(--line-strong);
+  margin-bottom: 2rem;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sectionSeparator {
+    align-self: center;
+    /* Force center on mobile */
+    margin-left: 0;
+    height: 60px;
+  }
 }
 
 .aboutContainer {
@@ -12,25 +33,25 @@
 
 .sectionIndicator {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  width: 100%;
 }
 
 .indicatorText {
-  font-family: var(--font-primary);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-family: var(--font-accent);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
   color: var(--ink);
-  opacity: 0.6;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  opacity: 1;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .indicatorLine {
-  height: 1px;
-  background-color: var(--ink);
-  opacity: 0.2;
-  width: 100px;
+  display: none;
 }
 
 .logo {
@@ -61,8 +82,9 @@
 }
 
 .paragraph {
-  font-family: var(--font-accent);
-  color: #58585a;
+  text-align: center;
+  font-family: var(--font-display);
+  color: #334155;
   font-size: clamp(1.15rem, 1.1vw, 1.05rem);
   line-height: 1.7;
   /* color: var(--ink); */
@@ -83,55 +105,14 @@
   filter: blur(0px);
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin: 1rem 0;
-  width: 100%;
-}
 
-.statCard {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  background-color: var(--bg-alt);
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
-  will-change: transform, opacity, filter;
-}
-
-.statCard:hover {
-  background-color: var(--bg);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-}
-
-.statNumber {
-  font-family: var(--font-headline);
-  font-size: 3rem;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1;
-}
-
-.statLabel {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  color: var(--mid);
-  text-transform: capitalize;
-  letter-spacing: 0.01em;
-  font-weight: 600;
-}
 
 .actionsContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
@@ -143,9 +124,9 @@
   border: 1px solid rgb(229, 229, 234);
   background: transparent;
   color: var(--ink);
-  font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   will-change: transform, opacity, filter;
@@ -195,7 +176,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .aboutSection {
-    padding: 5rem 0;
+    padding: 6rem 0 4rem 0;
   }
 
   .paragraph {
@@ -215,26 +196,15 @@
   }
 
   .aboutContainer {
-    gap: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .paragraph {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     line-height: 1.6;
   }
 
-  .statsGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
 
-  .statCard {
-    padding: 1.5rem;
-  }
-
-  .statNumber {
-    font-size: 2.1rem;
-  }
 
   .actionsContainer {
     margin-top: 15px;

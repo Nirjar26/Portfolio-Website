@@ -1,6 +1,7 @@
 .heroSection {
   min-height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--bg);
@@ -26,7 +27,7 @@
   font-family: var(--font-headline);
   font-size: clamp(2.5rem, 6vw, 6rem);
   /* Reduced font size as requested */
-  font-weight: 400;
+  font-weight: 500;
   color: #111111;
   line-height: 1.15;
   letter-spacing: -0.1rem;
@@ -50,13 +51,13 @@
 
 .intro,
 .role {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-size: 1.5rem;
   /* Increased size slightly */
-  font-weight: 500;
+  font-weight: 600;
   /* Bolder as requested */
   letter-spacing: 0.01em;
-  color: #111111;
+  color: var(--ink);
   display: inline-block;
 }
 
@@ -113,6 +114,10 @@
   .infoGroup {
     gap: 0.3rem;
     align-items: flex-start;
+  }
+
+  .scrollLink {
+    height: 40px;
   }
 
   .intro,
