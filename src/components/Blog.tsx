@@ -57,25 +57,21 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className={styles.blogSection}>
+    <section id="blog" className={styles.blogSection} data-aos="fade-up">
       <div className="container">
         <div className={styles.header}>
-          <h2 className={styles.sectionHeader}>Engineering Notes</h2>
-          <p className={styles.sectionSubtitle}>Articles on what I’ve experienced.</p>
+          <h2 className={styles.sectionHeader} data-aos="fade-up" data-aos-duration="600">Engineering Notes</h2>
+          <p className={styles.sectionSubtitle} data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Articles on what I’ve experienced.</p>
         </div>
 
-        <motion.div
-          className={styles.blogGrid}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-        >
-          {blogPosts.map((post) => (
-            <motion.div
+        <div className={styles.blogGrid}>
+          {blogPosts.map((post, index) => (
+            <div
               key={post.id}
               className={styles.blogCard}
-              variants={itemVariants}
+              data-aos="fade-up"
+              data-aos-delay={(index * 100) + 100}
+              data-aos-duration="600"
             >
               <div className={`${styles.cardHeader} ${post.gradientClass}`}>
                 <div className={styles.tagGroup}>
@@ -110,9 +106,9 @@ const Blog = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

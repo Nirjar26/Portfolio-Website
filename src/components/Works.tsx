@@ -22,6 +22,7 @@ interface Project {
   };
   icon: React.ReactNode;
   techStack: TechStack[];
+  badge?: string;
 }
 
 const projects: Project[] = [
@@ -60,7 +61,7 @@ const projects: Project[] = [
   },
   {
     title: "VaultLock",
-    subtitle: "Password Manager",
+    subtitle: "Offline Password Manager",
     description: "VaultLock is an offline password manager. Credentials stay on your machine, encrypted, with no cloud sync and no external servers. VaultLock keeps everything local: AES-256 encryption, fast retrieval, and a desktop UI that doesn't require an internet connection to function.",
     features: [
       "Zero Knowledge", "AES Encryption", "Argon2 Hashing"
@@ -75,20 +76,21 @@ const projects: Project[] = [
     ]
   },
   {
-    title: "FlowStone",
+    title: "SmartFlow",
     subtitle: "Lifecycle Task Management",
     description: "FlowStone is a team operations platform covering tasks, approvals, resource planning, and reporting. Most teams use separate tools for task tracking, approvals, and resource allocation.Work gets done, but visibility doesn't. FlowStone puts all of it in one place.",
     features: [
       "Task Engine", "Approval Flow", "Resource Tracking"
     ],
     securityPills: [],
-    links: { github: "https://github.com/Nirjar26/FlowStone", live: "#" },
+    links: { github: "https://github.com/Nirjar26/SmartFlow", live: "#" },
     icon: <Layers size={24} />,
     techStack: [
       { category: "Frontend", items: ["React", "TypeScript", "Tailwind CSS", "Lucide Icons", "React Hook Form", "TanStack Query"] },
       { category: "Backend", items: ["PHP 8.2", "Custom REST API", "JWT Auth", "Role-Based Access Control (RBAC)"] },
       { category: "Database", items: ["MySQL 8.0", "Relational Schema Design", "High-Performance Query Optimization"] }
-    ]
+    ],
+    badge: "Academic Project"
   }
 ];
 
@@ -157,61 +159,67 @@ const Works = () => {
   };
 
   return (
-    <section id="works" className={styles.worksSection}>
-      <div className="container">
-        <div className={styles.header}>
-          <h2 className={styles.headerLabel}>Works</h2>
-          <p className={styles.headerSubtitle}>Projects I worked on. Each of them containing its own case study.</p>
-        </div>
+    <>
+      <section id="works" className={styles.worksSection} data-aos="fade-up">
+        <div className="container">
+          <div className={styles.header}>
+            <h2 className={styles.headerLabel} data-aos="fade-up" data-aos-duration="600">Works</h2>
+            <p className={styles.headerSubtitle} data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">Projects I worked on. Each of them containing its own case study.</p>
+          </div>
 
-        <motion.div
-          className={styles.projectsGrid}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.title}
-              className={styles.projectCard}
-              variants={itemVariants}
-            >
-              <div className={styles.cardInfo}>
-                <div className={styles.titleGroup}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectSubtitle}>{project.subtitle}</p>
-                </div>
+          <div className={styles.projectsGrid}>
+            {projects.map((project, index) => (
+              <div
+                key={project.title}
+                className={styles.projectCard}
+                data-aos="fade-up"
+                data-aos-delay={(index * 100) + 100}
+                data-aos-duration="600"
+              >
+                <div className={styles.cardInfo}>
+                  <div className={styles.titleGroup}>
+                    <div className={styles.titleWithBadge}>
+                      <h3 className={styles.projectTitle}>{project.title}</h3>
+                      {project.badge && (
+                        <span className={styles.institutionBadge}>
+                          {project.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                  </div>
 
-                <p className={styles.projectDescription}>
-                  {project.description}
-                </p>
+                  <p className={styles.projectDescription}>
+                    {project.description}
+                  </p>
 
-                <div className={styles.techTags}>
-                  {allTags(project).map((tag) => (
-                    <span key={tag} className={styles.techTag}>
-                      {tag}
-                    </span>
-                  ))}
-                  <button
-                    onClick={() => setActiveStackProject(project)}
-                    className={styles.moreTags}
-                  >
-                    + View Full Stack
-                  </button>
-                </div>
+                  <div className={styles.techTags}>
+                    {allTags(project).map((tag) => (
+                      <span key={tag} className={styles.techTag}>
+                        {tag}
+                      </span>
+                    ))}
+                    <button
+                      onClick={() => setActiveStackProject(project)}
+                      className={styles.moreTags}
+                      suppressHydrationWarning
+                    >
+                      + View Full Stack
+                    </button>
+                  </div>
 
-                <div className={styles.cardActions}>
-                  <a href={project.links.github} className={styles.previewButton} target="_blank" rel="noopener noreferrer">
-                    <Github size={16} />
-                    <span>Github</span>
-                  </a>
+                  <div className={styles.cardActions}>
+                    <a href={project.links.github} className={styles.previewButton} target="_blank" rel="noopener noreferrer">
+                      <Github size={16} />
+                      <span>Github</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <AnimatePresence>
         {activeStackProject && (
@@ -290,7 +298,7 @@ const Works = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 };
 

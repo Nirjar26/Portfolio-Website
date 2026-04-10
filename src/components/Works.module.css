@@ -60,6 +60,12 @@
 
 
 
+.cardActions {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .cardInfo {
   display: flex;
   flex-direction: column;
@@ -77,6 +83,32 @@
   color: var(--ink);
   line-height: 1.25;
   letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.titleWithBadge {
+  display: flex;
+  flex-direction: column-reverse;
+  /* Put badge above title */
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.institutionBadge {
+  font-family: var(--font-display);
+  font-size: 0.80rem;
+  font-weight: 700;
+  background: rgba(186, 230, 253, 0.35);
+  border: none !important;
+  color: #0369a1 !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2rem;
+  text-transform: capitalize;
+  letter-spacing: -0.01rem;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.05);
 }
 
 .projectSubtitle {
@@ -85,6 +117,8 @@
   font-weight: 500;
   color: var(--mid);
   margin-top: 0.10rem;
+  text-align: center;
+  width: 100%;
 }
 
 .projectDescription {
@@ -151,7 +185,8 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
-  z-index: 20000; /* Above navbar */
+  z-index: 20000;
+  /* Above navbar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,31 +198,44 @@
   max-width: 800px;
   background-color: var(--white);
   border-radius: 2rem;
-  padding: 3rem;
+  padding: 3.5rem;
   position: relative;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
 }
 
 .modalClose {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line);
-  background-color: var(--bg-alt);
+  background-color: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modalClose:hover {
+  background-color: var(--ink);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 .modalHeader {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--line);
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
+  padding-right: 3rem;
+  /* Space for close button */
 }
 
 .modalTitle {
@@ -271,6 +319,23 @@
     margin-bottom: 2.5rem;
   }
 
+  .titleWithBadge {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .projectTitle {
+    font-size: 1.25rem;
+    text-align: left;
+  }
+
+  .projectSubtitle {
+    text-align: center;
+    width: 100%;
+  }
+
   .worksSection {
     padding: 4rem 0;
   }
@@ -290,9 +355,12 @@
   }
 
   .modalContent {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem 2rem;
     border-radius: 1.5rem;
-    max-height: 90vh; /* Use more space since navbar is covered */
+    max-height: 85vh;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
   }
 
   .modalHeader {
@@ -321,6 +389,11 @@
 
   .categoryHeader h4 {
     font-size: 0.7rem;
+  }
+
+  .institutionBadge {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.45rem;
   }
 
   .stackItem {

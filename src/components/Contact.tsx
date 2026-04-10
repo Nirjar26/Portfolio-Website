@@ -90,28 +90,41 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className={styles.contactSection}>
+    <section id="contact" className={styles.contactSection} data-aos="fade-up">
       <div className="container">
-        <motion.div
-          className={styles.contactContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-        >
+        <div className={styles.contactContainer}>
           <div className={styles.indicator}>
-            <motion.span className={styles.indicatorText} variants={itemVariants}>
+            <span 
+              className={styles.indicatorText} 
+              data-aos="fade-up"
+              data-aos-duration="600"
+            >
               Get in Touch
-            </motion.span>
-            <motion.p className={styles.description} variants={itemVariants}>
+            </span>
+            <p 
+              className={styles.description} 
+              data-aos="fade-up"
+              data-aos-delay="100"
+              data-aos-duration="600"
+            >
               Please contact me directly at <a href="mailto:nirjargoswami2626@gmail.com" className={styles.mailLink}>nirjargoswami2626@gmail.com</a> or through this form.
-            </motion.p>
-            <motion.p className={styles.description} variants={itemVariants}>
+            </p>
+            <p 
+              className={styles.description} 
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="700"
+            >
               Building and exploring cloud-native applications, IAM systems, and secure backend architectures.
-            </motion.p>
-            <motion.p className={styles.description} variants={itemVariants}>
+            </p>
+            <p 
+              className={styles.description} 
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="600"
+            >
               Interested in working on real-world, production-grade solutions.
-            </motion.p>
+            </p>
             <motion.div
               className={styles.indicatorLine}
               initial={{ scaleX: 0, opacity: 0 }}
@@ -122,25 +135,27 @@ const Contact = () => {
             />
           </div>
 
-          <motion.form
+          <form
             className={styles.form}
             onSubmit={handleSubmit}
-            variants={itemVariants}
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="600"
           >
             <div className={styles.formGrid}>
               <div className={styles.inputGroup}>
                 <label className={styles.label}>Your name<span className={styles.required}>*</span></label>
-                <input type="text" name="name" className={styles.input} placeholder="Jane Doe" required />
+                <input type="text" name="name" className={styles.input} placeholder="Jane Doe" required suppressHydrationWarning />
               </div>
 
               <div className={styles.inputGroup}>
                 <label className={styles.label}>Company name</label>
-                <input type="text" name="company" className={styles.input} placeholder="Your company (optional)" />
+                <input type="text" name="company" className={styles.input} placeholder="Your company (optional)" suppressHydrationWarning />
               </div>
 
               <div className={styles.inputGroup}>
                 <label className={styles.label}>Email<span className={styles.required}>*</span></label>
-                <input type="email" name="email" className={styles.input} placeholder="you@gmail.com" required />
+                <input type="email" name="email" className={styles.input} placeholder="you@gmail.com" required suppressHydrationWarning />
               </div>
 
               <div className={styles.inputGroup}>
@@ -160,25 +175,19 @@ const Contact = () => {
             </div>
 
             <div className={styles.submitContainer}>
-              <button type="submit" className={styles.submitBtn}>
+              <button type="submit" className={styles.submitBtn} suppressHydrationWarning>
                 Send Message
                 <ArrowRight size={20} />
               </button>
               <span className={styles.privacyText}>No spam. Your details stay private.</span>
             </div>
-          </motion.form>
-        </motion.div>
+          </form>
+        </div>
       </div>
 
-      <div className={styles.socialSection}>
+      <div className={styles.socialSection} data-aos="fade-up" data-aos-delay="500" data-aos-duration="700">
         <div className="container">
-          <motion.div
-            className={styles.socialGrid}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={containerVariants}
-          >
+          <div className={styles.socialGrid}>
             <div className={styles.socialRowsWrapper}>
               {/* Main Social Profiles */}
               <div className={styles.socialGrid}>
@@ -196,8 +205,10 @@ const Contact = () => {
                     className={styles.socialItem}
                     target="_blank"
                     rel="noopener noreferrer"
-                    variants={leftItemVariants}
                     whileTap={{ scale: 0.9 }}
+                    data-aos="fade-up"
+                    data-aos-delay={400 + (index * 50)}
+                    data-aos-duration="600"
                   >
                     <item.icon className={styles.socialIconImg} size={28} />
                   </motion.a>
@@ -217,7 +228,9 @@ const Contact = () => {
                         <motion.button
                           className={styles.socialItem}
                           onClick={() => setShowLocation(!showLocation)}
-                          variants={leftItemVariants}
+                          data-aos="fade-up"
+                          data-aos-delay={1200 + (index * 100)}
+                          data-aos-duration="700"
                         >
                           <MapPin className={styles.socialIconImg} size={28} />
                         </motion.button>
@@ -241,7 +254,9 @@ const Contact = () => {
                         className={styles.socialItem}
                         target="_blank"
                         rel="noopener noreferrer"
-                        variants={leftItemVariants}
+                        data-aos="fade-up"
+                        data-aos-delay={700 + (index * 50)}
+                        data-aos-duration="600"
                       >
                         <item.icon className={styles.socialIconImg} size={28} />
                       </motion.a>
@@ -250,17 +265,16 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className={styles.copyright}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.85 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
+            data-aos="fade-up"
+            data-aos-delay="900"
+            data-aos-duration="600"
           >
             © {new Date().getFullYear()} Nirjar Goswami. All rights reserved.
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

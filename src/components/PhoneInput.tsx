@@ -129,6 +129,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ value = "", onChange, name = "p
           type="button"
           className={styles.selectorBtn}
           onClick={() => setIsOpen(!isOpen)}
+          suppressHydrationWarning
         >
           <span className={styles.flag}>{selectedCountry.flag}</span>
           <span className={styles.dialCode}>{selectedCountry.dialCode}</span>
@@ -195,6 +196,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ value = "", onChange, name = "p
         placeholder="Enter mobile number"
         value={phone}
         onChange={handlePhoneChange}
+        suppressHydrationWarning
       />
       
       {/* Hidden combined value for form submission */}

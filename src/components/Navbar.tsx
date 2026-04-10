@@ -119,6 +119,7 @@ const Navbar = () => {
             className={styles.menuToggle}
             onClick={toggleMenu}
             aria-label="Toggle menu"
+            suppressHydrationWarning
           >
             <span className={isMenuOpen ? styles.barOpen : styles.bar}></span>
             <span className={isMenuOpen ? styles.barOpen : styles.bar}></span>

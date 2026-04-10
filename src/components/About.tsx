@@ -40,7 +40,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className={styles.aboutSection}>
+    <section id="about" className={styles.aboutSection} data-aos="fade-up">
       <motion.div 
         className={styles.sectionSeparator}
         initial={{ height: 0, opacity: 0 }}
@@ -49,20 +49,15 @@ const About = () => {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       />
       <div className="container">
-        <motion.div
-          className={styles.aboutContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-        >
+        <div className={styles.aboutContainer}>
           <div className={styles.sectionIndicator}>
-            <motion.span
+            <span
               className={styles.indicatorText}
-              variants={itemVariants}
+              data-aos="fade-up"
+              data-aos-duration="700"
             >
               About
-            </motion.span>
+            </span>
             <motion.div
               className={styles.indicatorLine}
               initial={{ scaleX: 0, opacity: 0 }}
@@ -74,18 +69,33 @@ const About = () => {
           </div>
 
           <div className={styles.textContainer}>
-            <motion.p className={styles.paragraph} variants={itemVariants}>
+            <p 
+              className={styles.paragraph} 
+              data-aos="fade-up"
+              data-aos-delay="100"
+              data-aos-duration="700"
+            >
               Hi, I'm <strong>Nirjar</strong>, an <strong>Associate Cloud Engineer </strong>residing in <strong>Ahmedabad, Gujarat</strong>. I work in cloud and security — mostly the infrastructure side, understanding how systems are actually put together and what can go wrong.
-            </motion.p>
+            </p>
 
-            <motion.p className={styles.paragraph} variants={itemVariants}>
+            <p 
+              className={styles.paragraph} 
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="700"
+            >
               The interest started early. I was always more curious about what was happening behind the screen than what was on it. Networks, systems, the cloud — I wanted to know how things actually run, not just that they do. That eventually turned into something I take seriously.
               These days I'm trying to get good at a few specific things rather than knowing a bit about everything.
-            </motion.p>
+            </p>
 
-            <motion.p className={styles.paragraph} variants={itemVariants}>
+            <p 
+              className={styles.paragraph} 
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="700"
+            >
               Outside of work, I’m gaming or discovering new places to eat.
-            </motion.p>
+            </p>
 
             <div className={styles.actionsContainer}>
               <motion.a
@@ -93,10 +103,12 @@ const About = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.downloadBtn}
-                variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 download="Nirjar_Goswami_Resume.pdf"
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-aos-duration="700"
               >
                 <Download size={18} />
                 Download CV
@@ -116,8 +128,10 @@ const About = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    variants={leftItemVariants}
                     whileTap={{ scale: 0.9 }}
+                    data-aos="fade-up"
+                    data-aos-delay={500 + index * 100}
+                    data-aos-duration="700"
                   >
                     <social.icon size={20} />
                   </motion.a>
@@ -126,7 +140,7 @@ const About = () => {
             </div>
 
           </div>
-        </motion.div>
+          </div>
       </div>
     </section>
   );
