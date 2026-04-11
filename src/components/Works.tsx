@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Github, Shield, Rocket, Lock, Layers, X, Cpu, Globe, Database, Cog } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 import styles from './Works.module.css';
 
 interface TechStack {
@@ -96,30 +97,19 @@ const projects: Project[] = [
 
 const Works = () => {
   const [activeStackProject, setActiveStackProject] = useState<Project | null>(null);
-  const scrollPositionRef = useRef(0);
+  const lenis = useLenis();
 
   useEffect(() => {
     if (activeStackProject) {
-      scrollPositionRef.current = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPositionRef.current}px`;
-      document.body.style.width = '100%';
+      lenis?.stop();
     } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: scrollPositionRef.current, left: 0, behavior: 'auto' });
-      });
+      lenis?.start();
     }
 
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      lenis?.start();
     };
-  }, [activeStackProject]);
+  }, [activeStackProject, lenis]);
 
   const getCategoryIcon = (category: string) => {
     switch (category.toLowerCase()) {
@@ -245,54 +235,57 @@ const Works = () => {
                 <h3 className={styles.modalTitle}>{activeStackProject.title}</h3>
                 <p className={styles.modalSubtitle}>Full Technology Infrastructure</p>
               </div>
-              <div className={styles.stackGrid}>
-                {activeStackProject.features.length > 0 && (
-                  <div className={styles.stackCategory}>
-                    <div className={styles.categoryHeader}>
-                      <Rocket size={18} />
-                      <h4>Core Features</h4>
-                    </div>
-                    <div className={styles.stackItems}>
-                      {activeStackProject.features.map((item) => (
-                        <span key={item} className={styles.stackItem}>
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
 
-                {activeStackProject.securityPills.length > 0 && (
-                  <div className={styles.stackCategory}>
-                    <div className={styles.categoryHeader}>
-                      <Github size={18} />
-                      <h4>GitHub Actions</h4>
+              <div className={styles.modalScrollArea} data-lenis-prevent>
+                <div className={styles.stackGrid}>
+                  {activeStackProject.features.length > 0 && (
+                    <div className={styles.stackCategory}>
+                      <div className={styles.categoryHeader}>
+                        <Rocket size={18} />
+                        <h4>Core Features</h4>
+                      </div>
+                      <div className={styles.stackItems}>
+                        {activeStackProject.features.map((item) => (
+                          <span key={item} className={styles.stackItem}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className={styles.stackItems}>
-                      {activeStackProject.securityPills.map((item) => (
-                        <span key={item} className={`${styles.stackItem} ${styles.ghActionItem}`}>
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                  )}
 
-                {activeStackProject.techStack.map((category) => (
-                  <div key={category.category} className={styles.stackCategory}>
-                    <div className={styles.categoryHeader}>
-                      {getCategoryIcon(category.category)}
-                      <h4>{category.category}</h4>
+                  {activeStackProject.securityPills.length > 0 && (
+                    <div className={styles.stackCategory}>
+                      <div className={styles.categoryHeader}>
+                        <Github size={18} />
+                        <h4>GitHub Actions</h4>
+                      </div>
+                      <div className={styles.stackItems}>
+                        {activeStackProject.securityPills.map((item) => (
+                          <span key={item} className={`${styles.stackItem} ${styles.ghActionItem}`}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className={styles.stackItems}>
-                      {category.items.map((item) => (
-                        <span key={item} className={styles.stackItem}>
-                          {item}
-                        </span>
-                      ))}
+                  )}
+
+                  {activeStackProject.techStack.map((category) => (
+                    <div key={category.category} className={styles.stackCategory}>
+                      <div className={styles.categoryHeader}>
+                        {getCategoryIcon(category.category)}
+                        <h4>{category.category}</h4>
+                      </div>
+                      <div className={styles.stackItems}>
+                        {category.items.map((item) => (
+                          <span key={item} className={styles.stackItem}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </motion.div>
           </motion.div>

@@ -3,11 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lenis = useLenis();
+
+  const handleNavClick = (e: React.MouseEvent, path: string) => {
+    e.preventDefault();
+    lenis?.scrollTo(path);
+    setIsMenuOpen(false);
+  };
+
+  const handleLetsTalk = (e: React.MouseEvent) => {
+    handleNavClick(e, '#contact');
+  };
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
@@ -100,7 +112,11 @@ const Navbar = () => {
               key={item.name}
               variants={itemVariants}
             >
-              <a href={item.path} className={styles.navLink}>
+              <a 
+                href={item.path} 
+                className={styles.navLink}
+                onClick={(e) => handleNavClick(e, item.path)}
+              >
                 {item.name}
               </a>
             </motion.li>
@@ -109,7 +125,7 @@ const Navbar = () => {
 
         <div className={styles.navActions}>
           <motion.div variants={itemVariants}>
-            <a href="#contact" className={styles.cta}>
+            <a href="#contact" onClick={handleLetsTalk} className={styles.cta}>
               Lets Talk
             </a>
           </motion.div>
@@ -148,7 +164,7 @@ const Navbar = () => {
                   <a
                     href={item.path}
                     className={styles.mobileNavLink}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.path)}
                   >
                     {item.name}
                   </a>
@@ -162,7 +178,7 @@ const Navbar = () => {
                 <a 
                   href="#contact" 
                   className={styles.mobileCTA} 
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleLetsTalk}
                 >
                   Lets Talk
                 </a>

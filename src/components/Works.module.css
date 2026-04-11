@@ -185,12 +185,14 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 20000;
-  /* Above navbar */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 1.5rem;
+  overflow: hidden;
+  /* Overlay doesn't scroll anymore */
 }
 
 .modalContent {
@@ -198,13 +200,50 @@
   max-width: 800px;
   background-color: var(--white);
   border-radius: 2rem;
-  padding: 3.5rem;
+  padding: 0;
+  /* Changed to handle padding in sub-elements */
   position: relative;
-  max-height: 85vh;
-  overflow-y: auto;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  max-height: 90vh;
+  /* Stay centered and bounded */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modalHeader {
+  padding: 3.5rem 3.5rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.modalScrollArea {
+  padding: 1.5rem 3.5rem 3.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  min-height: 0;
+  /* Critical for flexbox scrolling children */
+  display: block;
+  /* Premium small scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: var(--line) transparent;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.modalScrollArea::-webkit-scrollbar {
+  width: 8px;
+  display: block;
+}
+
+.modalScrollArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalScrollArea::-webkit-scrollbar-thumb {
+  background-color: var(--line-strong);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 20px;
 }
 
 .modalClose {
@@ -228,14 +267,6 @@
   background-color: var(--ink);
   color: var(--white);
   transform: scale(1.1);
-}
-
-.modalHeader {
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2rem;
-  padding-right: 3rem;
-  /* Space for close button */
 }
 
 .modalTitle {
@@ -314,7 +345,6 @@
 }
 
 @media (max-width: 768px) {
-
   .header {
     margin-bottom: 2.5rem;
   }
@@ -328,7 +358,7 @@
 
   .projectTitle {
     font-size: 1.25rem;
-    text-align: left;
+    text-align: center;
   }
 
   .projectSubtitle {
@@ -350,55 +380,54 @@
   }
 
   .modalOverlay {
-    padding: 1.5rem;
-    align-items: center;
+    padding: 1rem;
   }
 
   .modalContent {
-    padding: 3rem 1.5rem 2rem;
     border-radius: 1.5rem;
-    max-height: 85vh;
     width: 100%;
-    margin: 0 auto;
-    overflow-x: hidden;
+    margin: auto;
+    max-height: 85vh;
   }
 
   .modalHeader {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    padding: 2.5rem 1.5rem 1rem;
+  }
+
+  .modalScrollArea {
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  .modalClose {
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
   }
 
   .modalTitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .modalSubtitle {
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
+    font-size: 0.85rem;
   }
 
   .stackGrid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
-  .categoryHeader {
-    margin-bottom: 0.75rem;
-    gap: 0.5rem;
+  .techTag {
+    font-size: 0.75rem;
   }
 
   .categoryHeader h4 {
-    font-size: 0.7rem;
-  }
-
-  .institutionBadge {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.45rem;
+    font-size: 0.8rem;
   }
 
   .stackItem {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.4rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
   }
 }
