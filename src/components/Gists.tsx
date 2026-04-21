@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import { Code } from 'lucide-react';
 import styles from './Gists.module.css';
 
 const gistPosts = [
@@ -45,6 +45,9 @@ const Gists = () => {
               data-aos-duration="600"
             >
               <div className={`${styles.cardBanner} ${post.gradientClass}`}>
+                <div className={styles.iconWrapper}>
+                  <Code size={14} strokeWidth={2.5} />
+                </div>
                 <h3 className={styles.cardTitle}>{post.title}</h3>
                 <p className={styles.cardDescription}>{post.description}</p>
 

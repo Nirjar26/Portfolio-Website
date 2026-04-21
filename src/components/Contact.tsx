@@ -29,17 +29,6 @@ const HashnodeIcon = ({ size = 28, className }: { size?: number, className?: str
   />
 );
 
-const SnapchatIcon = ({ size = 28, className }: { size?: number, className?: string }) => (
-  <img
-    src="/assets/social%20icons/snapchat-svgrepo-com.svg"
-    width={size}
-    height={size}
-    alt="Snapchat"
-    className={className}
-    style={{ display: 'block' }}
-  />
-);
-
 const Contact = () => {
   const [showLocation, setShowLocation] = useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -210,7 +199,7 @@ const Contact = () => {
                   { icon: Instagram, name: "Instagram", href: "https://www.instagram.com/nirjar_goswami/" },
                   { icon: Twitter, name: "X", href: "https://x.com/nirjxrgoswami" },
                   { icon: Linkedin, name: "LinkedIn", href: "https://www.linkedin.com/in/nirjarbharthi-goswami-b593633a7" },
-                  { icon: SnapchatIcon, name: "Snapchat", href: "https://www.snapchat.com/@nirjxr26" },
+                  { icon: Ghost, name: "Snapchat", href: "https://www.snapchat.com/@nirjxr26" },
                   { icon: Github, name: "GitHub", href: "https://github.com/Nirjar26/" },
                   { icon: HashnodeIcon, name: "Hashnode", href: "https://nirjar.hashnode.dev/" }
                 ].map((item, index) => (
