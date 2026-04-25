@@ -101,6 +101,7 @@ export const viewport = {
 import Navbar from "@/components/Navbar";
 import LenisProvider from "@/components/LenisProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
   children,
@@ -158,6 +159,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <SpeedInsights />
+          <Analytics />
         </LenisProvider>
       </body>
     </html>
