@@ -92,6 +92,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  themeColor: "#ffffff",
 };
 
 import Navbar from "@/components/Navbar";
@@ -108,17 +109,24 @@ export default function RootLayout({
     name: "Nirjar Goswami",
     url: "https://nirjar.me",
     jobTitle: "Associate Cloud Engineer",
+    description: "Nirjar Goswami is an Associate Cloud Engineer based in Ahmedabad, specializing in cloud infrastructure, IAM security, and full-stack development.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Ahmedabad",
       addressRegion: "Gujarat",
       addressCountry: "India",
     },
+    workLocation: {
+      "@type": "ContactPoint",
+      "areaServed": "Global",
+      "availableLanguage": ["English", "Hindi", "Gujarati"]
+    },
     sameAs: [
       "https://github.com/Nirjar26/",
       "https://www.linkedin.com/in/nirjarbharthi-goswami-b593633a7",
       "https://x.com/nirjxrgoswami",
       "https://www.instagram.com/nirjar_goswami/",
+      "https://nirjar.hashnode.dev/"
     ],
     knowsAbout: [
       "Cloud Architecture",

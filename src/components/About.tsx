@@ -125,7 +125,8 @@ const About = () => {
                     key={index}
                     href={social.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer me"
+                    aria-label={`Follow Nirjar Goswami on ${social.name || social.icon.name || 'Social Media'}`}
                     className={styles.socialLink}
                     whileTap={{ scale: 0.9 }}
                     data-aos="fade-up"

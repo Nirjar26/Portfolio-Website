@@ -199,9 +199,10 @@ const Contact = () => {
                   <motion.a
                     key={index}
                     href={item.href}
+                    aria-label={`Visit Nirjar's ${item.name}`}
                     className={styles.socialItem}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer me"
                     whileTap={{ scale: 0.9 }}
                     data-aos="fade-up"
                     data-aos-delay={400 + (index * 50)}
@@ -224,6 +225,7 @@ const Contact = () => {
                       <div className={styles.locationContainer}>
                         <motion.button
                           className={styles.socialItem}
+                          aria-label="Show Location"
                           onClick={() => setShowLocation(!showLocation)}
                           data-aos="fade-up"
                           data-aos-delay={1200 + (index * 100)}
@@ -249,8 +251,9 @@ const Contact = () => {
                       <motion.a
                         href={item.href}
                         className={styles.socialItem}
+                        aria-label={`Contact via ${item.name}`}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                         data-aos="fade-up"
                         data-aos-delay={700 + (index * 50)}
                         data-aos-duration="600"
