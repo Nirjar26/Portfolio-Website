@@ -39,14 +39,16 @@ const projects: Project[] = [
     links: { github: "https://github.com/nirjxr26/AegisMesh-IAM", live: "#" },
     icon: <Shield size={24} />,
     techStack: [
-      { category: "Frontend", items: ["React 19", "Vite", "Tailwind CSS 4", "React Router DOM v7", "TanStack React Query", "React Hook Form", "Zod", "Axios", "Recharts", "Lucide Icons", "react-hot-toast"] },
-      { category: "Backend", items: ["Node.js Runtime", "Express.js", "JWT Auth", "Passport.js OAuth", "TOTP / otplib", "Prisma ORM", "bcryptjs", "Helmet.js", "Joi Validation", "Winston Logging", "express-rate-limit", "Multer", "node-cron", "UUID", "CORS"] },
-      { category: "Database", items: ["PostgreSQL", "Prisma Schema", "Indexed Access Structures", "Transaction-Safe Auth Workflows"] },
-      { category: "Containerization", items: ["Docker", "Kubernetes"] }
+      { category: "Frontend", items: ["React 19", "Tailwind CSS 4", "TanStack Query"] },
+      { category: "Backend", items: ["Node.js", "Express.js", "JWT Auth", "Prisma ORM"] },
+      { category: "Database", items: ["PostgreSQL"] },
+      { category: "Containerization", items: ["Docker", "Kubernetes"] },
+      { category: "CI/CD", items: ["Jenkins"] }
     ],
     titleLogos: [
       { src: "https://www.vectorlogo.zone/logos/docker/docker-icon.svg", alt: "Docker" },
-      { src: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg", alt: "Kubernetes" }
+      { src: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg", alt: "Kubernetes" },
+      { src: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg", alt: "Jenkins" }
     ]
   },
   {
@@ -60,10 +62,10 @@ const projects: Project[] = [
     links: { github: "https://github.com/nirjxr26/DeployLens", live: "#" },
     icon: <Rocket size={24} />,
     techStack: [
-      { category: "Frontend", items: ["React 19", "TypeScript", "Zustand", "Axios", "socket.io-client", "CSS Custom Properties", "React Router v6"] },
-      { category: "Backend", items: ["Node.js 20", "Express", "PostgreSQL 15", "Prisma ORM", "JWT + bcrypt", "AES-256-GCM", "AWS SDK v3", "Socket.io", "node-cron", "Zod"] },
-      { category: "Integrations", items: ["GitHub OAuth + REST API", "AWS CodeDeploy", "AWS SNS + EventBridge", "HMAC-SHA256 Verification"] },
-      { category: "Infrastructure", items: ["Self-hosted deployment", "PostgreSQL (RDS/Supabase compatible)"] }
+      { category: "Frontend", items: ["React 19", "TypeScript", "Zustand", "Socket.io"] },
+      { category: "Backend", items: ["Node.js 20", "Express", "Prisma ORM", "AWS SDK v3"] },
+      { category: "Integrations", items: ["GitHub API", "AWS CodeDeploy", "AWS SNS", "EventBridge"] },
+      { category: "Database", items: ["PostgreSQL 15"] }
     ],
     titleLogos: [
       { src: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg", alt: "AWS CodeDeploy" }
@@ -80,9 +82,9 @@ const projects: Project[] = [
     links: { github: "https://github.com/nirjxr26/VaultLock-Password-Manager", live: "#" },
     icon: <Lock size={24} />,
     techStack: [
-      { category: "Frontend", items: ["PyQt6", "QML", "Fluent UI", "GPU-Accelerated Rendering"] },
-      { category: "Backend", items: ["Python 3.10+", "AES (Fernet) Pipeline", "Argon2id KDF", "Secure Clipboard Lifecycle", "Password Generator Engine", "Zero-Knowledge Model", "Offline-First Architecture"] },
-      { category: "Database", items: ["Encrypted SQLite Local Vault", "Structured Credential Indexing", "Secure Asset Caching"] }
+      { category: "Frontend", items: ["PyQt6", "QML"] },
+      { category: "Backend", items: ["Python 3.10+", "AES-256", "Argon2id"] },
+      { category: "Database", items: ["SQLite"] }
     ]
   },
   {
@@ -96,9 +98,9 @@ const projects: Project[] = [
     links: { github: "https://github.com/nirjxr26/SmartFlow", live: "#" },
     icon: <Layers size={24} />,
     techStack: [
-      { category: "Frontend", items: ["React", "TypeScript", "Tailwind CSS", "Lucide Icons", "React Hook Form", "TanStack Query"] },
-      { category: "Backend", items: ["PHP 8.2", "Custom REST API", "JWT Auth", "Role-Based Access Control (RBAC)"] },
-      { category: "Database", items: ["MySQL 8.0", "Relational Schema Design", "High-Performance Query Optimization"] }
+      { category: "Frontend", items: ["React", "TypeScript", "Tailwind CSS"] },
+      { category: "Backend", items: ["PHP 8.2"] },
+      { category: "Database", items: ["MySQL 8.0"] }
     ],
     badge: "Academic Project"
   }
@@ -128,6 +130,7 @@ const Works = () => {
       case 'integrations': return <Layers size={18} />;
       case 'infrastructure': return <Database size={18} />;
       case 'containerization': return <Box size={18} />;
+      case 'ci/cd': return <Rocket size={18} />;
       default: return <Cog size={18} />;
     }
   };

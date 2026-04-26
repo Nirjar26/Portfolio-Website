@@ -20,6 +20,7 @@ const techStackRow1 = [
   { name: "AWS", category: "Cloud", icon: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
   { name: "Docker", category: "DevOps", icon: "https://www.vectorlogo.zone/logos/docker/docker-icon.svg" },
   { name: "Kubernetes", category: "Orchestration", icon: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" },
+  { name: "Jenkins", category: "CI/CD", icon: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" },
   { name: "Nginx", category: "Web Server", icon: "https://www.vectorlogo.zone/logos/nginx/nginx-icon.svg" },
   { name: "GitHub", category: "Platform", icon: "/assets/common/social-icons/github.svg" },
   { name: "Git", category: "Tools", icon: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
