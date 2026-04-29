@@ -46,9 +46,9 @@ const projects: Project[] = [
       { category: "CI/CD", items: ["Jenkins"] }
     ],
     titleLogos: [
-      { src: "https://www.vectorlogo.zone/logos/docker/docker-icon.svg", alt: "Docker" },
-      { src: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg", alt: "Kubernetes" },
-      { src: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg", alt: "Jenkins" }
+      { src: "/assets/icons/tech/docker.svg", alt: "Docker" },
+      { src: "/assets/icons/tech/kubernetes.svg", alt: "Kubernetes" },
+      { src: "/assets/icons/tech/jenkins.svg", alt: "Jenkins" }
     ]
   },
   {
@@ -68,7 +68,7 @@ const projects: Project[] = [
       { category: "Database", items: ["PostgreSQL 15"] }
     ],
     titleLogos: [
-      { src: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg", alt: "AWS CodeDeploy" }
+      { src: "/assets/icons/tech/aws.svg", alt: "AWS CodeDeploy" }
     ]
   },
   {

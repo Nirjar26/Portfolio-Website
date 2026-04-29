@@ -1,0 +1,112 @@
+.techStackSection {
+  padding: 3rem 0 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.headerLabel {
+  font-family: var(--font-accent);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 1;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  margin: 0;
+  text-align: center;
+}
+
+.headerSubtitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--mid);
+  text-align: center;
+  max-width: 600px;
+  margin: 0.5rem auto 0;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.centeredContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 100%;
+  background: linear-gradient(135deg,
+      #f6efe8 0%,
+      #f1e8f5 30%,
+      #e8edf8 65%,
+      #e6f0f2 100%);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+}
+
+.iconBox {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.15rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.iconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.largerIcon {
+  transform: scale(1.35);
+}
+
+.iconBox:hover .iconImg {
+  transform: scale(1.05);
+}
+
+.iconBox:hover .largerIcon {
+  transform: scale(1.4);
+}
+
+@media (max-width: 768px) {
+
+  .techStackSection {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .centeredContainer {
+    gap: 1.25rem;
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  .iconBox {
+    width: 66px;
+    height: 66px;
+    padding: 0.80rem;
+    border-radius: var(--radius-sm);
+  }
+}

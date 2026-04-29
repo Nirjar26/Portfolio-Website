@@ -64,7 +64,7 @@ const Gists = () => {
                 </div>
 
                   <div className={styles.blendedLogo}>
-                    <img src="/assets/projects/GitBook.svg" alt="GitBook documentation platform" />
+                    <img src="/assets/icons/tech/gitbook.svg" alt="GitBook documentation platform" />
                   </div>
               </div>
             </div>

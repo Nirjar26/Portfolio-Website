@@ -80,19 +80,19 @@
 } */
 
 .blendedLogo {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
 }
 
 .blendedLarge {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
 .blendedAWS {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   position: relative;
   bottom: 10px;
   right: 5px;
@@ -460,8 +460,8 @@
   }
 
   .blendedLogo {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
   }
 
   /* .projectCard:hover .blendedLogos {
@@ -470,8 +470,8 @@
   } */
 
   .blendedLarge {
-    width: 75px;
-    height: 75px;
+    width: 55px;
+    height: 55px;
   }
 
   .modalOverlay {

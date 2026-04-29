@@ -7,7 +7,7 @@ import styles from './About.module.css';
 
 const GithubIcon = ({ size = 20, className }: { size?: number, className?: string }) => (
   <img
-    src="/assets/common/social-icons/github.svg"
+    src="/assets/icons/social/github.svg"
     width={size * 1.4}
     height={size * 1.4}
     alt="GitHub"
@@ -16,28 +16,7 @@ const GithubIcon = ({ size = 20, className }: { size?: number, className?: strin
   />
 );
 
-const techStackRow1 = [
-  { name: "AWS", category: "Cloud", icon: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
-  { name: "Docker", category: "DevOps", icon: "https://www.vectorlogo.zone/logos/docker/docker-icon.svg" },
-  { name: "Kubernetes", category: "Orchestration", icon: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" },
-  { name: "Jenkins", category: "CI/CD", icon: "https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" },
-  { name: "Nginx", category: "Web Server", icon: "https://www.vectorlogo.zone/logos/nginx/nginx-icon.svg" },
-  { name: "GitHub", category: "Platform", icon: "/assets/common/social-icons/github.svg" },
-  { name: "Git", category: "Tools", icon: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
-  { name: "Linux", category: "OS", icon: "https://www.vectorlogo.zone/logos/linux/linux-icon.svg" }
-];
 
-const techStackRow2 = [
-  { name: "Python", category: "Language", icon: "https://www.vectorlogo.zone/logos/python/python-icon.svg" },
-  { name: "TypeScript", category: "Language", icon: "https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" },
-  { name: "JavaScript", category: "Language", icon: "https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg" },
-  { name: "PostgreSQL", category: "Database", icon: "https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg" },
-  { name: "Redis", category: "Database", icon: "https://www.vectorlogo.zone/logos/redis/redis-icon.svg" },
-  { name: "SQL", category: "Database", icon: "https://www.svgrepo.com/show/331760/sql-database-generic.svg" },
-  { name: "Go", category: "Language", icon: "https://www.vectorlogo.zone/logos/golang/golang-icon.svg" },
-  { name: "Java", category: "Language", icon: "https://www.vectorlogo.zone/logos/java/java-icon.svg" },
-  // { name: "PyQt6", category: "UI Framework", icon: "https://raw.githubusercontent.com/isaac-parker/python-pyqt6-template/main/icon.png" }
-];
 
 const About = () => {
   const containerVariants: Variants = {
@@ -174,31 +153,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className={styles.techStackWrapper} data-aos="fade-up" data-aos-delay="600">
-            <div className={styles.marqueeContainer}>
-              {[...techStackRow1, ...techStackRow1].map((tech, index) => (
-                <div key={index} className={styles.techCard}>
-                  <img src={tech.icon} alt={tech.name} className={styles.techIcon} />
-                  <div className={styles.techInfo}>
-                    <span className={styles.techName}>{tech.name}</span>
-                    <span className={styles.techCategory}>{tech.category}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
 
-            <div className={styles.marqueeContainerRev}>
-              {[...techStackRow2, ...techStackRow2].map((tech, index) => (
-                <div key={index} className={styles.techCard}>
-                  <img src={tech.icon} alt={tech.name} className={styles.techIcon} />
-                  <div className={styles.techInfo}>
-                    <span className={styles.techName}>{tech.name}</span>
-                    <span className={styles.techCategory}>{tech.category}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

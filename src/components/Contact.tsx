@@ -20,7 +20,7 @@ import PhoneInput from './PhoneInput';
 
 const HashnodeIcon = ({ size = 28, className }: { size?: number, className?: string }) => (
   <img
-    src="/assets/common/social-icons/hashnode.svg"
+    src="/assets/icons/social/hashnode.svg"
     width={size}
     height={size}
     alt="Hashnode"
@@ -31,7 +31,7 @@ const HashnodeIcon = ({ size = 28, className }: { size?: number, className?: str
 
 const GithubIcon = ({ size = 28, className }: { size?: number, className?: string }) => (
   <img
-    src="/assets/common/social-icons/github.svg"
+    src="/assets/icons/social/github.svg"
     width={size * 1.6}
     height={size * 1.6}
     alt="GitHub"

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, Plus_Jakarta_Sans, Figtree } from "next/font/google";
+import { Inter, Outfit, Plus_Jakarta_Sans, Figtree, Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,6 +10,12 @@ const inter = Inter({
 const display = Figtree({
   variable: "--font-display",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-intro",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const outfit = Outfit({
@@ -147,7 +153,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} ${outfit.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${display.variable} ${outfit.variable} ${plusJakartaSans.variable} ${poppins.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
