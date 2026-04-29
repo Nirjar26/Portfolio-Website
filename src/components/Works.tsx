@@ -19,6 +19,7 @@ interface Project {
   securityPills: string[];
   links: {
     github?: string;
+    gitlab?: string;
     live?: string;
   };
   icon: React.ReactNode;
@@ -79,7 +80,7 @@ const projects: Project[] = [
       "Zero Knowledge", "AES Encryption", "Argon2 Hashing"
     ],
     securityPills: ["CodeQL", "Dependabot", "Gitleaks"],
-    links: { github: "https://github.com/nirjxr26/VaultLock-Password-Manager", live: "#" },
+    links: { gitlab: "https://gitlab.com/nirjxr26/VaultLock-Password-Manager", live: "#" },
     icon: <Lock size={24} />,
     techStack: [
       { category: "Frontend", items: ["PyQt6", "QML"] },
@@ -95,7 +96,7 @@ const projects: Project[] = [
       "Task Engine", "Approval Flow", "Resource Tracking"
     ],
     securityPills: [],
-    links: { github: "https://github.com/nirjxr26/SmartFlow", live: "#" },
+    links: { github: "https://gitlab.com/nirjxr26/VaultLock-Password-Manager/", live: "#" },
     icon: <Layers size={24} />,
     techStack: [
       { category: "Frontend", items: ["React", "TypeScript", "Tailwind CSS"] },
@@ -195,16 +196,30 @@ const Works = () => {
                   </div>
 
                   <div className={styles.cardActions}>
-                    <a 
-                      href={project.links.github} 
-                      className={styles.previewButton} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} source code on GitHub`}
-                    >
-                      <Github size={16} />
-                      <span>Github</span>
-                    </a>
+                    {project.links.github && (
+                      <a
+                        href={project.links.github}
+                        className={styles.previewButton}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
+                      >
+                        <Github size={16} />
+                        <span>Github</span>
+                      </a>
+                    )}
+                    {project.links.gitlab && (
+                      <a
+                        href={project.links.gitlab}
+                        className={styles.previewButton}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitLab`}
+                      >
+                        <img src="/assets/icons/tech/gitlab.svg" alt="GitLab" style={{ width: 16, height: 16 }} />
+                        <span>GitLab</span>
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -219,6 +234,7 @@ const Works = () => {
                           ${styles.blendedLogo} 
                           ${(logo.alt === 'Docker' || logo.alt === 'GitHub Actions') ? styles.blendedLarge : ''}
                           ${logo.alt === 'AWS CodeDeploy' ? styles.blendedAWS : ''}
+                          ${logo.alt === 'GitLab' ? styles.blendedGitLab : ''}
                         `}
                       />
                     ))}

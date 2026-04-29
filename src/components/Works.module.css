@@ -62,15 +62,15 @@
 
 .blendedLogos {
   position: absolute;
-  bottom: -15px;
-  right: -25px;
+  bottom: -10px;
+  right: -15px;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   opacity: 0.25;
   pointer-events: none;
   z-index: 0;
-  transform: rotate(-10deg);
+  transform: rotate(0deg);
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -86,8 +86,8 @@
 }
 
 .blendedLarge {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 }
 
 .blendedAWS {
@@ -96,6 +96,12 @@
   position: relative;
   bottom: 10px;
   right: 5px;
+}
+
+.blendedGitLab {
+  position: relative;
+  bottom: 4px;
+  right: 15px;
 }
 
 .cardActions {
@@ -454,14 +460,14 @@
 
   .blendedLogos {
     bottom: -15px;
-    right: -15px;
+    right: -7px;
     gap: 1rem;
     opacity: 0.25;
   }
 
   .blendedLogo {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
   }
 
   /* .projectCard:hover .blendedLogos {
@@ -470,8 +476,8 @@
   } */
 
   .blendedLarge {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
   }
 
   .modalOverlay {

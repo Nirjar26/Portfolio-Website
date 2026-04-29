@@ -472,6 +472,45 @@
   }
 }
 
+.resumeContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--ink);
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.resumeBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  background-color: #000000;
+}
+
+.resumeBtn svg {
+  transition: transform 0.3s ease;
+}
+
+.resumeBtn:hover svg {
+  transform: translateY(2px);
+}
+
 @media (max-width: 768px) {
   .contactSection {
     padding: 3rem 0;
@@ -597,5 +636,11 @@
   .copyright {
     text-align: center;
     margin-top: 2rem;
+  }
+
+  .resumeBtn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
   }
 }

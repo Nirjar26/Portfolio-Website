@@ -46,7 +46,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '#hero' },
-    { name: 'About me', path: '#about' },
+    { name: 'Stack', path: '#tech-stack' },
     { name: 'Works', path: '#works' },
     { name: 'Blogs', path: '#blog' },
     { name: 'Gists', path: '#gists' }
@@ -95,7 +95,7 @@ const Navbar = () => {
     <nav
       className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${isMenuOpen ? styles.menuOpen : ''}`}
     >
-      <motion.div 
+      <motion.div
         className={styles.container}
         initial="hidden"
         animate="visible"
@@ -109,12 +109,12 @@ const Navbar = () => {
         {/* Desktop Links */}
         <ul className={styles.navLinks}>
           {navItems.map((item) => (
-            <motion.li 
+            <motion.li
               key={item.name}
               variants={itemVariants}
             >
-              <a 
-                href={item.path} 
+              <a
+                href={item.path}
                 className={styles.navLink}
                 onClick={(e) => handleNavClick(e, item.path)}
               >
@@ -127,7 +127,7 @@ const Navbar = () => {
         <div className={styles.navActions}>
           <motion.div variants={itemVariants}>
             <a href="#contact" onClick={handleLetsTalk} className={styles.cta}>
-              Lets Talk
+              Contact
             </a>
           </motion.div>
 
@@ -176,9 +176,9 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 + 0.1 }}
               >
-                <a 
-                  href="#contact" 
-                  className={styles.mobileCTA} 
+                <a
+                  href="#contact"
+                  className={styles.mobileCTA}
                   onClick={handleLetsTalk}
                 >
                   Lets Talk

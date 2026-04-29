@@ -13,6 +13,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  Download,
   BookOpen
 } from 'lucide-react';
 import styles from './Contact.module.css';
@@ -276,6 +277,24 @@ const Contact = () => {
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className={styles.resumeContainer}>
+            <motion.a
+              href="/assets/docs/Nirjar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resumeBtn}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              download="Nirjar_Goswami_Resume.pdf"
+              data-aos="fade-up"
+              data-aos-delay="1000"
+              data-aos-duration="600"
+            >
+              <Download size={20} />
+              <span>Download Resume</span>
+            </motion.a>
           </div>
 
           <div
