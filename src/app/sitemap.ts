@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: 'https://blog.nirjar.me/vaultlock-logo-fetching',
+      url: 'https://blog.nirjar.me/docker-aegismesh',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,

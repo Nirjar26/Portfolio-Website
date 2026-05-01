@@ -7,8 +7,8 @@ const gistPosts = [
     id: 1,
     tag: "SECURITY",
     date: "APRIL 16, 2026",
-    title: "AegisMesh - Core Fixes",
-    description: "Real IAM fixes covering RBAC conflicts, reauthentication, session control, and audit logging.",
+    title: "AegisMesh - Core Patterns",
+    description: "Real IAM fixes covering Deny-First authorization, reauthentication, session control, and audit logging.",
     articleUrl: "https://gist.github.com/nirjxr26/db51dfe1093fed690f6372116483bc9a",
     gradientClass: styles.gradientAegis
   },
@@ -63,9 +63,9 @@ const Gists = () => {
                   </a>
                 </div>
 
-                  <div className={styles.blendedLogo}>
-                    <img src="/assets/icons/tech/gitbook.svg" alt="GitBook documentation platform" />
-                  </div>
+                <div className={styles.blendedLogo}>
+                  <img src="/assets/icons/tech/gitbook.svg" alt="GitBook documentation platform" />
+                </div>
               </div>
             </div>
           ))}

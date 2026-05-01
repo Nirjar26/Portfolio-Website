@@ -228,7 +228,7 @@
   }
 
   .headline {
-    font-size: clamp(2rem, 12vw, 4rem);
+    font-size: clamp(2.2rem, 13vw, 4rem);
     line-height: 1.25;
     display: flex;
     flex-direction: column;
